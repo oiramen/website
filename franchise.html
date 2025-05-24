@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Franchise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+  <img src="./images/no_background_oiramen.png" alt="Oi Ramen Logo" class="logo" />
+  <nav>
+    <a href="./index.html">Home</a>
+    <a href="./menu.html">Menu</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- Franchise Section -->
+<section id="franchise" class="franchise-form">
+  <h2>Join the Oi Ramen Family!</h2>
+  <p>Want to serve ramen in your city/town? Fill out the form below and become part of the Oi Ramen franchise family!</p>
+
+  <form id="franchise-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <input type="tel" name="phone" placeholder="Your Phone Number" required />
+    <input type="text" name="city" placeholder="City / Town" required />
+    <textarea name="message" placeholder="Tell us why you want to join" rows="5" required></textarea>
+    <button type="submit">Submit Franchise Interest</button>
+  </form>
+</section>
+
+<footer>
+  <div class="links">
+    <div>
+      <h4>About Oi Ramen</h4>
+      <ul>
+        <li><a href="#">Our Golden Past</a></li>
+        <li><a href="#">Responsible Disclosure</a></li>
+        <li><a href="#">Legal</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="./contact.html">Contact Us</a></li>
+        <li><a href="./feedback.html">Feedback</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Oi Ramen Info</h4>
+      <ul>
+        <li><a href="./menu.html">Menu</a></li>
+        <li><a href="#">Order Lookup</a></li>
+        <li><a href="#">Gift Card</a></li>
+        <li><a href="#">Nutrition & Allergen</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="#">Terms and Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">Caution Notice</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Careers</h4>
+      <ul>
+        <li><a href="#">Join Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <p>&copy; 2025 Oi Ramen | Made with ❤️, 🍥, and 🍜 in Hyderabad</p>
+  <div class="social-icons">
+    <a href="https://instagram.com/oi_ramen">Instagram</a>
+    <a href="#">Facebook</a>
+  </div>
+  <p>build pwa-2502-0-3_39e1541f</p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    emailjs.init({
+      publicKey: "ABL9Lp1be6VFZWUFM", // ← Replace with your actual public key
+    });
+  })();
+</script>
+
+
+<!-- Form Handling Script: runs after SDK is loaded -->
+<script>
+  window.addEventListener('load', function () {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init("ABL9Lp1be6VFZWUFM"); // Your EmailJS Public Key
+
+      const serviceID = 'service_i8zu464';
+
+      const internalTemplateID = 'template_34pivye'; // Email to your team
+      const customerTemplateID = 'template_zez76m9'; // Email to customer (create this in EmailJS)
+
+      const form = document.getElementById('franchise-form');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const name = form.name.value;
+        const email = form.email.value;
+        const phone = form.phone.value;
+        const city = form.city.value;
+        const message = form.message.value;
+
+        const formData = {
+          name,
+          email,
+          phone,
+          city,
+          message,
+          title: "Franchise Interest",
+          to_email: email // used for customer email
+        };
+
+        // Send to your internal team
+        emailjs.send(serviceID, internalTemplateID, formData)
+          .then(() => {
+            // Send confirmation email to the customer
+            emailjs.send(serviceID, customerTemplateID, formData)
+              .then(() => {
+                document.body.innerHTML = `
+                  <div style="text-align: center; padding: 50px; font-family: 'Baloo 2', sans-serif;">
+                    <h1>Thank You, <span style="color: #e63946;">${name}</span>! 🍜</h1>
+                    <p>We’ve received your franchise interest. Our team will be in touch soon!</p>
+                    <p><a href="./index.html" style="text-decoration: underline; color: #0077b6;">Back to Home</a></p>
+                  </div>
+                `;
+              })
+              .catch((error) => {
+                alert('Oops! Something went wrong while sending confirmation. Please try again later.');
+                console.error('Customer Email Error:', error);
+              });
+          })
+          .catch((error) => {
+            alert('Oops! Something went wrong. Please try again later.');
+            console.error('Internal Email Error:', error);
+          });
+      });
+    } else {
+      console.error('EmailJS SDK failed to load.');
+    }
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oi Ramen - In Desi Style 🍜</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<div id="logoPopup" class="logo-popup-container">
+  <span class="logo-popup-close">&times;</span>
+  <div class="logo-popup-inner">
+    <img class="logo-popup-content" id="popupImage">
+  </div>
+</div>
+
+
+
+<body>
+  <header>
+    <img src="./images/no_background_oiramen.png" alt="Oi Ramen Logo" class="logo" />
+    <nav>
+      <a href="./menu.html">Menu</a>
+      <a href="./franchise.html">Franchise</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Oi Ramen</h1>
+      <h2><em>Desi Style Meets Anime</em></h2>
+      <p>Inspired by Naruto’s love for ramen, served with the soul of Hyderabad!</p>
+    </div>
+    <img src="./images/naruto_eating_ramen.png" alt="Naruto eating ramen" />
+  </section>
+
+ <section class="menu-carousel">
+  <h2>Our Ramen 🍜</h2>
+  <br> 
+  <div class="carousel-container">
+    <img class="carousel-image" src="./images/Naruto_ramen.jpg" alt="Naruto ramen">
+    <img class="carousel-image" src="./images/Uzumaki_veg.jpeg" alt="Uzumaki veg bowl">
+    <img class="carousel-image" src="./images/Akasuki_veg.jpg" alt="Akasuki veg bowl">
+    <img class="carousel-image" src="./images/Demon_chicken.jpeg" alt="Demon chicken bowl">
+    <img class="carousel-image" src="./images/Veg_k.jpeg" alt="Veg khao suey">
+    <img class="carousel-image" src="./images/Chicken_k.jpeg" alt="Chicken khao suey">
+  </div>
+</section>
+
+
+<!-- Add this where you want the Oi Ramen stats section -->
+<section class="oi-ramen-stats">
+  <h2 class="section-title">Journey of Oi Ramen</h2>
+  <p class="story-text">
+    It all began with a simple love for authentic Japanese noodles and rich, flavorful broth crafted with passion and tradition.
+    Since our first bowl was served, Oi Ramen has brought the heartwarming taste of Japan to food lovers worldwide.
+    Each recipe is carefully perfected, blending fresh ingredients and time-honored techniques to create the perfect slurp in every bowl.
+    Today, with over 300 ramen artisans and food enthusiasts passionately working across our locations,
+    we continue to bring joy, warmth, and soul to your table — one steaming bowl at a time.
+    With a new Oi Ramen restaurant opening every few weeks, we’re proud to share our tradition of delicious ramen across multiple cities and countries,
+    committed to quality, community, and sustainability.
+  </p>
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+      <div>
+        <h3>2024</h3>
+        <p>Since</p>
+      </div>
+    </div>
+    <div class="stat-item">
+      <span class="icon"><i class="fas fa-store"></i></span>
+      <div>
+        <h3>1</h3>
+        <p>Restaurant</p>
+      </div>
+    </div>
+    <div class="stat-item">
+      <span class="icon"><i class="fas fa-users"></i></span>
+      <div>
+        <h3>10+</h3>
+        <p>Team Members</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  
+  <script>
+    const images = document.querySelectorAll('.carousel-image');
+    let current = 0;
+  
+    function showNextImage() {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }
+  
+    // Initialize first image
+    images[0].classList.add('active');
+  
+    // Change image every 3 seconds
+    setInterval(showNextImage, 3000);
+  </script>
+  
+  <script>
+    const logo = document.querySelector('.logo');
+    const popup = document.getElementById('logoPopup');
+    const popupImg = document.getElementById('popupImage');
+    const closeBtn = document.querySelector('.logo-popup-close');
+  
+    logo.onclick = function () {
+      popup.style.display = "block";
+      popupImg.src = this.src;
+    }
+  
+    closeBtn.onclick = function () {
+      popup.style.display = "none";
+    }
+  
+    window.onclick = function(event) {
+      if (event.target === popup) {
+        popup.style.display = "none";
+      }
+    }
+  </script>
+  
+  
+  
+
+  <footer>
+    <div class="links">
+      <div>
+        <h4>About Oi Ramen</h4>
+        <ul>
+          <li><a href="./founder.html">About Our Founders</a></li>
+          <li><a href="#">Responsible Disclosure</a></li>
+          <li><a href="#">Legal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="./contact.html">Contact Us</a></li>
+          <li><a href="./feedback.html">Feedback</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Oi Ramen Info</h4>
+        <ul>
+          <li><a href="./menu.html">Menu</a></li>
+          <li><a href="#">Order Lookup</a></li>
+          <li><a href="#">Gift Card</a></li>
+          <li><a href="#">Nutrition & Allergen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <ul>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Caution Notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Careers</h4>
+        <ul>
+          <li><a href="#">Join Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <p>&copy; 2025 Oi Ramen | Made with ❤️, 🍥, and 🍜 in Hyderabad</p>
+    <div class="social-icons">
+      <a  href="https://instagram.com/oi_ramen">Instagram</a>
+      <a href="#">Facebook</a>
+    </div>
+    <p>build pwa-2502-0-3_39e1541f</p>
+  </footer>
+</body>
+</html>

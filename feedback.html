@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Franchise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <img src="./images/no_background_oiramen.png" alt="Oi Ramen Logo" class="logo" />
+    <nav>
+      <a href="./index.html">Home</a>
+    </nav>
+  </header>
+
+  <section class="feedback-section" id="contact">
+    <h1>Send Us Your Feedback</h1>
+    <p class="intro">We’d love to hear from you — reach out anytime!</p>
+    <form id="feedback-form" class="feedback-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Feedback" rows="6" required></textarea>
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html" />
+      <button type="submit">Submit</button>
+    </form>
+    <div id="form-message" style="margin-top: 1em; font-weight: bold;"></div>
+  </section>
+
+  <footer>
+    <div class="links">
+      <div>
+        <h4>About Oi Ramen</h4>
+        <ul>
+          <li><a href="#">Our Golden Past</a></li>
+          <li><a href="#">Responsible Disclosure</a></li>
+          <li><a href="#">Legal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="./contact.html">Contact Us</a></li>
+          <li><a href="./feedback.html">Feedback</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Oi Ramen Info</h4>
+        <ul>
+          <li><a href="./menu.html">Menu</a></li>
+          <li><a href="#">Order Lookup</a></li>
+          <li><a href="#">Gift Card</a></li>
+          <li><a href="#">Nutrition & Allergen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <ul>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Caution Notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Careers</h4>
+        <ul>
+          <li><a href="#">Join Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <p>&copy; 2025 Oi Ramen | Made with ❤️, 🍥, and 🍜 in Hyderabad</p>
+    <div class="social-icons">
+      <a href="https://instagram.com/oi_ramen">Instagram</a>
+      <a href="#">Facebook</a>
+    </div>
+    <p>build pwa-2502-0-3_39e1541f</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('feedback-form');
+    const formMessage = document.getElementById('form-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbwl3fUoWRnD_09j1avXdCpGiqCoSK0pJ49rXqDKH32L1WptqACYf9_HeTV25yXFVD2wmA/exec', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.result === 'success') {
+          formMessage.style.color = 'green';
+          formMessage.textContent = 'Thank you for your feedback! We appreciate it.';
+          form.reset();
+        } else {
+          formMessage.style.color = 'red';
+          formMessage.textContent = 'Something went wrong. Please try again.';
+        }
+      } catch (error) {
+        formMessage.style.color = 'red';
+        formMessage.textContent = 'Error submitting the form. Please try again later.';
+        console.error('Form submission error:', error);
+      }
+    });
+  </script>
+
+</body>
+</html>
