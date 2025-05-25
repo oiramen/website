@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Oi Ramen Gift Quiz</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff6e5;
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .quiz-container {
+      max-width: 500px;
+      margin: auto;
+      background: #ffe4b5;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 15px;
+      background-color: #e09a17;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h2>🎁 Oi Ramen Gift Quiz</h2>
+    <p>Answer correctly to get <strong>10% OFF</strong>!</p>
+
+    <p><strong id="question">Loading question...</strong></p>
+    <input type="text" id="answer" placeholder="Enter your answer" />
+    <br>
+    <button onclick="checkAnswer()">Submit</button>
+
+    <div id="feedback" class="result"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      { question: "What is the name of the main character in Naruto?", answer: "naruto" },
+      { question: "In One Piece, who is the captain of the Straw Hat Pirates?", answer: "luffy" },
+      { question: "What is the name of the titan shifter in Attack on Titan who can harden his body?", answer: "armored titan" },
+      { question: "Who is known as the Flame Hashira in Demon Slayer?", answer: "rengoku" },
+      { question: "Which anime features a notebook that can kill anyone whose name is written in it?", answer: "death note" },
+      { question: "What is the name of the main protagonist in My Hero Academia?", answer: "midoriya" },
+      { question: "In Dragon Ball Z, who turns Super Saiyan first?", answer: "goku" },
+      { question: "In Fullmetal Alchemist, what is Edward Elric's brother's name?", answer: "alphonse" },
+      { question: "In Tokyo Ghoul, who becomes a half-ghoul?", answer: "kaneki" },
+      { question: "Who is the main character in Bleach?", answer: "ichigo" }
+    ];
+
+    let currentQuestion = {};
+
+    function loadRandomQuestion() {
+      const randomIndex = Math.floor(Math.random() * quizData.length);
+      currentQuestion = quizData[randomIndex];
+      document.getElementById("question").innerText = currentQuestion.question;
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("answer").value = "";
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+      const feedback = document.getElementById("feedback");
+
+      if (userAnswer === currentQuestion.answer.toLowerCase()) {
+        feedback.innerHTML = "🎉 Correct! Use code <strong>RAMEN10</strong> for 10% off!";
+        feedback.className = "result success";
+      } else {
+        feedback.innerHTML = "❌ Incorrect. Try again or refresh for a new question!";
+        feedback.className = "result error";
+      }
+    }
+
+    // Load one random question when the page loads
+    window.onload = loadRandomQuestion;
+  </script>
+
+</body>
+</html>

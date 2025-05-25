@@ -11,7 +11,7 @@
 <body>
 
   <header>
-    <img src="./images/no_background_oiramen.png" alt="Oi Ramen Logo" class="logo" />
+    <img src="https://i.postimg.cc/NFcM7XnF/no-background-oiramen.png" alt="Oi Ramen Logo" class="logo" />
     <nav>
       <a href="./index.html">Home</a>
     </nav>
@@ -31,55 +31,15 @@
     <div id="form-message" style="margin-top: 1em; font-weight: bold;"></div>
   </section>
 
-  <footer>
-    <div class="links">
-      <div>
-        <h4>About Oi Ramen</h4>
-        <ul>
-          <li><a href="#">Our Golden Past</a></li>
-          <li><a href="#">Responsible Disclosure</a></li>
-          <li><a href="#">Legal</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Support</h4>
-        <ul>
-          <li><a href="./contact.html">Contact Us</a></li>
-          <li><a href="./feedback.html">Feedback</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Oi Ramen Info</h4>
-        <ul>
-          <li><a href="./menu.html">Menu</a></li>
-          <li><a href="#">Order Lookup</a></li>
-          <li><a href="#">Gift Card</a></li>
-          <li><a href="#">Nutrition & Allergen</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Policies</h4>
-        <ul>
-          <li><a href="#">Terms and Conditions</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Disclaimer</a></li>
-          <li><a href="#">Caution Notice</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Careers</h4>
-        <ul>
-          <li><a href="#">Join Us</a></li>
-        </ul>
-      </div>
-    </div>
-    <p>&copy; 2025 Oi Ramen | Made with ❤️, 🍥, and 🍜 in Hyderabad</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/oi_ramen">Instagram</a>
-      <a href="#">Facebook</a>
-    </div>
-    <p>build pwa-2502-0-3_39e1541f</p>
-  </footer>
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error('Footer failed to load:', err));
+  </script>
 
   <script>
     const form = document.getElementById('feedback-form');
